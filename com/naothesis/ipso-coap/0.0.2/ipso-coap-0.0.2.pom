@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.naothesis</groupId>
 	<artifactId>ipso-coap</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<distributionManagement>
 		<repository>
@@ -37,23 +37,23 @@
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.12</version>
 				<configuration>
-					<message>Maven artifacts for ${project.artifactId}-${project.version}</message>
-					<noJekyll>true</noJekyll>
-					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+					<server>github</server>
+					<repositoryName>maven-repo</repositoryName>
+					<repositoryOwner>GabrySDK</repositoryOwner>
 					<branch>refs/heads/master</branch>
+					<noJekyll>true</noJekyll> <!-- Vedere bene cos'è -->
+					<message>Upload ${project.artifactId}-${project.version} jar</message>
+					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
 					<includes>
 						<include>**/*</include>
 					</includes>
-					<repositoryName>maven-repo</repositoryName>
-					<repositoryOwner>GabrySDK</repositoryOwner>
-					<server>github</server>
 				</configuration>
 				<executions>
 					<execution>
+						<phase>deploy</phase>
 						<goals>
 							<goal>site</goal>
 						</goals>
-						<phase>deploy</phase>
 					</execution>
 				</executions>
 			</plugin>
